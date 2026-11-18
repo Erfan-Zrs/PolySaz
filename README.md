@@ -36,37 +36,5 @@ Requirements: Node.js and npm.
 npm install
 npm start
 ```
-
 Open http://localhost:4200.
 
-## Scripts
-
-| Command | What it does |
-| --- | --- |
-| `npm start` | Start the dev server |
-| `npm run start:lan` | Start the dev server on your local network (test on a phone) |
-| `npm run build` | Production build into `dist/` |
-| `npm test` | Run unit tests once |
-| `npm run test:watch` | Run unit tests in watch mode |
-
-## Project structure
-
-```
-src/
-├── app/
-│   ├── core/          # i18n, theme, models, shared services and utils
-│   ├── features/
-│   │   ├── designer/  # case editor: Fabric.js canvas + Three.js preview
-│   │   ├── storefront/# home, products, blog, info pages
-│   │   └── shell/     # header, footer, layout
-│   └── shared/        # pipes (price, local date, local number)
-├── assets/
-│   ├── i18n/          # en.json, fa.json translations
-│   └── products/      # phone-cases.json catalog
-└── styles/            # design tokens, fonts, storefront styles
-```
-
-## Adding a translation
-
-1. Add the language to `src/app/core/i18n/languages.ts`
-2. Add `src/assets/i18n/<code>.json` with the same keys as `en.json`
