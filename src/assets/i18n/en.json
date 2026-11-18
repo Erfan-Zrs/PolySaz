@@ -1,0 +1,407 @@
+{
+  "common": {
+    "appName": "polySaz",
+    "loading": "Loading…",
+    "price": {
+      "toman": "{{amount}} Toman"
+    },
+    "language": {
+      "label": "Language"
+    },
+    "theme": {
+      "label": "Theme",
+      "light": "Light",
+      "dark": "Dark",
+      "system": "System"
+    },
+    "skipToContent": "Skip to content"
+  },
+  "designer": {
+    "panel": {
+      "label": "Case settings"
+    },
+    "phone": {
+      "label": "Phone model",
+      "loadError": "Couldn't load the phone list.",
+      "unverified": "This model's dimensions are approximate and not yet verified by measurement."
+    },
+    "caseColor": {
+      "label": "Case color",
+      "clear": "Clear",
+      "black": "Black",
+      "white": "White"
+    },
+    "wrap": {
+      "label": "Wrap design around the sides",
+      "hint": "The image continues over the case edges. The dashed line is where the back meets the sides; at the rounded corners the image is gathered slightly, like a candy wrapper. Use “Fill case” to cover the sides too."
+    },
+    "template": {
+      "show": "Show print template on case",
+      "short": "Template"
+    },
+    "zoom": {
+      "label": "Zoom",
+      "in": "Zoom in",
+      "out": "Zoom out",
+      "fit": "Fit to view"
+    },
+    "toolbar": {
+      "hide": "Hide toolbar",
+      "show": "Show toolbar"
+    },
+    "printZone": {
+      "title": "Print zone (incl. bleed)",
+      "mm": "{{width}} × {{height}} mm",
+      "px": "{{width}} × {{height}} px at {{dpi}} DPI",
+      "details": "Print details"
+    },
+    "scene": {
+      "webglUnavailable": "3D view isn't supported on this device."
+    },
+    "view": {
+      "label": "View",
+      "3d": "3D",
+      "edit": "Edit"
+    },
+    "flat": {
+      "label": "Design editor (back of the case)"
+    },
+    "design": {
+      "label": "Design",
+      "upload": "Upload image",
+      "layers": "Layers",
+      "reorder": "Drag to reorder {{name}} (or Alt + ↑/↓)",
+      "duplicate": "Duplicate {{name}}",
+      "delete": "Delete {{name}}",
+      "contain": "Fit inside",
+      "fill": "Fill case",
+      "rotateLeft": "Rotate left 90°",
+      "rotateRight": "Rotate right 90°",
+      "flip": "Flip horizontally",
+      "center": "Center on case",
+      "size": "Size",
+      "rotation": "Rotation",
+      "percent": "{{value}}%",
+      "degrees": "{{value}}°",
+      "invalidFile": "This file isn't a supported image.",
+      "lowDpi": "Low resolution for print ({{dpi}} DPI). Use a larger image or make it smaller on the case.",
+      "editHint": "Switch to Edit to move, resize and rotate the image.",
+      "gestureHint": "Drag to move. Use the corner handles to resize and the top handle to rotate; on a phone, pinch with two fingers. Zoom with the mouse wheel, the + and − buttons or by pinching outside the layer; drag the background to pan. Parts outside the case are dimmed and won't be printed.",
+      "layersEmpty": "No layers yet. Upload an image, add text or pick a shape to get started.",
+      "position": "Position",
+      "deleteSelected": "Delete layer"
+    },
+    "text": {
+      "add": "Add text",
+      "default": "Your text",
+      "content": "Text",
+      "empty": "Empty text",
+      "font": {
+        "label": "Font",
+        "vazirmatn": "Vazir",
+        "naskh": "Naskh",
+        "lalezar": "Lalezar"
+      },
+      "format": "Text style",
+      "bold": "Bold",
+      "italic": "Italic",
+      "underline": "Underline",
+      "align": {
+        "label": "Alignment",
+        "left": "Align left",
+        "center": "Center",
+        "right": "Align right"
+      },
+      "color": {
+        "label": "Text color"
+      }
+    },
+    "sections": {
+      "case": "Case",
+      "design": "Design",
+      "adjust": "Adjust"
+    },
+    "inspector": {
+      "label": "Selected layer",
+      "image": "Image",
+      "text": "Text",
+      "empty": "Nothing selected",
+      "emptyHint": "Pick a layer from the list, or tap it on the case in Edit view, to adjust it here.",
+      "shape": "Shape"
+    },
+    "color": {
+      "custom": "Custom color",
+      "black": "Black",
+      "white": "White",
+      "red": "Red",
+      "orange": "Orange",
+      "yellow": "Yellow",
+      "green": "Green",
+      "blue": "Blue",
+      "purple": "Purple"
+    },
+    "shapes": {
+      "label": "Shapes",
+      "add": "Add {{name}}",
+      "style": "Shape style",
+      "filled": "Filled",
+      "outline": "Outline",
+      "color": "Shape color",
+      "thickness": "Outline thickness",
+      "mm": "{{value}} mm",
+      "line": "Line",
+      "square": "Square",
+      "rounded": "Rounded square",
+      "circle": "Circle",
+      "triangle": "Triangle",
+      "rightTriangle": "Right triangle",
+      "diamond": "Diamond",
+      "hexagon": "Hexagon",
+      "star": "Star",
+      "heart": "Heart",
+      "arrow": "Arrow"
+    }
+  },
+  "nav": {
+    "label": "Main menu",
+    "open": "Open menu",
+    "close": "Close menu",
+    "products": "Products",
+    "blog": "Blog",
+    "info": "Info",
+    "design": "Design your case"
+  },
+  "pages": {
+    "home": "Custom printed phone cases",
+    "products": "Ready designs",
+    "blog": "Blog",
+    "info": "Info & help",
+    "design": "Case designer"
+  },
+  "footer": {
+    "blurb": "Phone cases printed with your own photos, names and designs. Design it in 3D, we print and ship it.",
+    "shop": "Shop",
+    "learn": "Learn",
+    "help": "Help",
+    "about": "About us",
+    "how": "How it works",
+    "shipping": "Shipping & payment",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "copyright": "© {{year}} polySaz. All rights reserved."
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "Custom printed phone cases",
+      "title": "A phone case that's",
+      "titleAccent": "only yours.",
+      "lead": "Type your name and watch it printed on the case in real time. Then make it yours with photos, text and ready designs.",
+      "nameLabel": "Your name or text",
+      "namePlaceholder": "e.g. Sara",
+      "phoneLabel": "Phone model",
+      "cta": "Design my case",
+      "secondary": "Browse ready designs",
+      "stageLabel": "Preview of a printed case with the “{{design}}” design",
+      "designsLabel": "Showcase designs",
+      "dragHint": "Drag to rotate",
+      "pause": "Pause the design slideshow",
+      "play": "Play the design slideshow",
+      "trust": {
+        "print": "Sharp 300 DPI print",
+        "shipping": "Ships in 3 working days",
+        "guarantee": "Free reprint if it's not right"
+      }
+    },
+    "how": {
+      "eyebrow": "How it works",
+      "title": "From idea to your hands in three steps",
+      "steps": {
+        "pick": {
+          "title": "Pick your phone",
+          "text": "Choose your model and the case colour: clear, black or white."
+        },
+        "design": {
+          "title": "Design it in 3D",
+          "text": "Add photos and text, or start from a ready design. See exactly how it looks from every angle."
+        },
+        "deliver": {
+          "title": "We print and ship",
+          "text": "Your design is printed in high resolution and delivered to your door."
+        }
+      }
+    },
+    "ready": {
+      "eyebrow": "Ready designs",
+      "title": "Start from a design you love",
+      "all": "See all designs"
+    },
+    "why": {
+      "eyebrow": "Why polySaz",
+      "title": "Made to look good and last",
+      "items": {
+        "print": {
+          "title": "Vivid, lasting print",
+          "text": "Rich colours and fine detail that don't fade or peel with daily use."
+        },
+        "fonts": {
+          "title": "Beautiful Persian type",
+          "text": "Fonts that handle Persian and Latin, with right-to-left text handled for you."
+        },
+        "fit": {
+          "title": "Exact fit",
+          "text": "Every model is built from its real dimensions, with precise camera and button cutouts."
+        },
+        "shipping": {
+          "title": "Fast delivery",
+          "text": "Printed and shipped within three working days, anywhere in the country."
+        }
+      }
+    },
+    "blog": {
+      "eyebrow": "Blog",
+      "title": "Ideas and tips for your design",
+      "all": "All articles"
+    },
+    "cta": {
+      "title": "Ready to make your own?",
+      "text": "Open the designer, add a photo or your name, and see your case in 3D in seconds.",
+      "button": "Open the designer"
+    }
+  },
+  "catalog": {
+    "eyebrow": "Products",
+    "title": "Ready designs",
+    "lead": "Pick a design, then make it yours in the designer: add your name, swap colours or add a photo.",
+    "filterLabel": "Filter by style",
+    "customize": "Customize",
+    "note": "Prices include the case and printing. Previews are shown on your selected phone model.",
+    "categories": {
+      "all": "All",
+      "abstract": "Abstract",
+      "pattern": "Patterns",
+      "nature": "Nature"
+    },
+    "designs": {
+      "aura": {
+        "name": "Aura",
+        "description": "Soft pastel colours melting into each other."
+      },
+      "marble": {
+        "name": "Marble",
+        "description": "White stone with grey veins and a thin line of gold."
+      },
+      "sunset": {
+        "name": "Retro sunset",
+        "description": "A striped sun sinking over a neon grid."
+      },
+      "girih": {
+        "name": "Girih tiles",
+        "description": "Eight-pointed stars inspired by Persian tilework."
+      },
+      "waves": {
+        "name": "Ocean waves",
+        "description": "Layered blue waves under a warm sun."
+      },
+      "terrazzo": {
+        "name": "Terrazzo",
+        "description": "Colourful stone chips on a warm cream base."
+      },
+      "botanical": {
+        "name": "Botanical",
+        "description": "Dense green leaves with small peach blossoms."
+      },
+      "memphis": {
+        "name": "Memphis party",
+        "description": "Bold shapes and squiggles in playful colours."
+      }
+    }
+  },
+  "blog": {
+    "eyebrow": "Blog",
+    "title": "Ideas, tips and inspiration",
+    "lead": "How to pick photos, fonts and colours that look great on a printed case.",
+    "readTime": "{{minutes}} min read",
+    "back": "All articles",
+    "notFound": {
+      "title": "Article not found",
+      "text": "This article may have moved or no longer exists."
+    },
+    "cta": {
+      "text": "Got an idea? Try it on your case.",
+      "button": "Design my case"
+    },
+    "posts": {
+      "photo-for-print": {
+        "title": "How to pick a photo that prints beautifully",
+        "excerpt": "Resolution, light and composition: what makes a photo look sharp on a phone case.",
+        "p1": "A phone case is small, but print is unforgiving. A photo that looks fine on your screen can turn soft once it is stretched over the whole back of a case. The good news: a few simple checks make the difference.",
+        "p2": "Start with resolution. Use the original file from your camera or phone, not a screenshot or an image saved from a messaging app, which are often heavily compressed. The designer warns you when an image is too small for the size you've chosen.",
+        "p3": "Light matters just as much. Photos taken in daylight, with clear contrast between the subject and the background, print far better than dark indoor shots. If a photo is very dark, brighten it a little before uploading.",
+        "p4": "Finally, mind the camera cutout. Keep faces and important details away from the top corner where the camera sits; the 3D preview shows you exactly what will be covered."
+      },
+      "persian-typography": {
+        "title": "Persian typography on a phone case",
+        "excerpt": "Choosing between Vazir, Naskh and Lalezar, and how to make a name stand out.",
+        "p1": "A name or a short line of poetry is one of the most personal things you can print. Persian letters are beautiful, but each font gives them a very different voice.",
+        "p2": "Vazir is clean and modern and stays readable at small sizes. Naskh has the calm rhythm of classic books, perfect for a line of verse. Lalezar is bold and playful and works best for a single short word.",
+        "p3": "Contrast is key: light text on a dark design, dark text on a light one. If the background is busy, place the text over a calmer part of the image or add a soft band behind it.",
+        "p4": "Mixing Persian and English? The designer sets the text direction from the first letter, so both read naturally. Try it in the hero above: type a name and watch it on the case."
+      },
+      "clear-or-color": {
+        "title": "Clear, black or white: which case is right for you?",
+        "excerpt": "How the case colour changes the look of your design.",
+        "p1": "The case colour is the canvas under your design. With a full-bleed design it barely shows, but with a small logo or a name it becomes part of the look.",
+        "p2": "A clear case lets the colour of your phone shine through, which is great for minimal designs. Black makes bright colours glow, while white keeps pastel and light designs fresh and crisp.",
+        "p3": "Not sure? Switch the colour in the designer and turn the case around in 3D. What you see is what we print."
+      }
+    }
+  },
+  "info": {
+    "eyebrow": "Info",
+    "title": "Info & help",
+    "lead": "Everything about polySaz, ordering, shipping and the most common questions.",
+    "tocLabel": "On this page",
+    "about": {
+      "title": "About us",
+      "p1": "polySaz is a small team of designers and makers who believe everyday objects should feel personal. We built a designer that shows your case in 3D, exactly as it will be printed.",
+      "p2": "Every case is printed to order with your design, checked by hand and carefully packed."
+    },
+    "how": {
+      "title": "How it works"
+    },
+    "shipping": {
+      "title": "Shipping & payment",
+      "p1": "Orders are printed and shipped within three working days. Delivery usually takes one to three days more depending on your city.",
+      "p2": "You can pay online with any bank card. You'll receive an order confirmation and a tracking code by text message."
+    },
+    "faq": {
+      "title": "Frequently asked questions",
+      "items": {
+        "material": {
+          "q": "What are the cases made of?",
+          "a": "Flexible, shock-absorbing TPU with a hard printed back, so the case protects your phone and the print stays sharp."
+        },
+        "quality": {
+          "q": "Will the print fade?",
+          "a": "No. We use UV-cured inks that resist scratches, sunlight and daily wear."
+        },
+        "time": {
+          "q": "How long does delivery take?",
+          "a": "Up to three working days for printing and shipping, plus one to three days for delivery."
+        },
+        "photo": {
+          "q": "My photo is low resolution. What can I do?",
+          "a": "The designer warns you when an image is too small. Use the original file, or make the image smaller on the case."
+        },
+        "return": {
+          "q": "What if something is wrong with my case?",
+          "a": "If the print or the fit isn't right, contact us within seven days and we'll reprint it for free."
+        }
+      }
+    },
+    "contact": {
+      "title": "Contact",
+      "p1": "Questions about an order or a custom project? Message our support team, we usually reply within a few hours on working days."
+    }
+  }
+}

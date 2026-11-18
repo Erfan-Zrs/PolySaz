@@ -1,0 +1,30 @@
+@layer components {
+  .faq__item {
+    --chevron-dir: 1;
+  }
+
+  .faq__item:dir(rtl) {
+    --chevron-dir: -1;
+  }
+
+  .faq__item summary::after {
+    content: '';
+    flex: none;
+    inline-size: 0.5em;
+    block-size: 0.5em;
+    border-block-end: 2px solid currentColor;
+    border-inline-end: 2px solid currentColor;
+    transform: rotate(calc(-45deg * var(--chevron-dir)));
+    transition: transform 0.3s ease;
+  }
+
+  .faq__item[open] summary::after {
+    transform: translateY(-25%) rotate(calc(45deg * var(--chevron-dir)));
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .faq__item summary::after {
+      transition: none;
+    }
+  }
+}

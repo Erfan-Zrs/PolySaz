@@ -1,0 +1,24 @@
+<ng-container *transloco="let t">
+  <div class="segmented" role="group" [attr.aria-label]="t('designer.shapes.style')">
+    <button type="button" [attr.aria-pressed]="filled()" (click)="filled.set(true)">
+      {{ t('designer.shapes.filled') }}
+    </button>
+    <button type="button" [attr.aria-pressed]="!filled()" (click)="filled.set(false)">
+      {{ t('designer.shapes.outline') }}
+    </button>
+  </div>
+  <div class="grid w-full grid-cols-[repeat(auto-fill,minmax(44px,1fr))] gap-1">
+    @for (s of shapes; track s.id) {
+      @let name = t('designer.shapes.' + s.id);
+      <button
+        type="button"
+        class="flex aspect-square items-center justify-center rounded-sm border border-border bg-surface text-primary cursor-pointer transition-colors duration-120 hover:border-primary hover:bg-primary-soft"
+        [attr.aria-label]="t('designer.shapes.add', { name })"
+        [title]="name"
+        (click)="add.emit({ shape: s.id, filled: filled() })"
+      >
+        <app-shape-icon class="size-[22px]" [shape]="s.id" [filled]="filled()" />
+      </button>
+    }
+  </div>
+</ng-container>

@@ -1,0 +1,93 @@
+<ng-container *transloco="let t">
+  <ul
+    class="flex flex-col gap-1"
+    cdkDropList
+    cdkDropListLockAxis="y"
+    [attr.aria-label]="t('designer.design.layers')"
+    (cdkDropListDropped)="onDrop($event)"
+  >
+    @for (layer of design.layers(); track layer.id; let i = $index) {
+      @let name =
+        layer.shape ? t('designer.shapes.' + layer.shape) : layer.name || t('designer.text.empty');
+      <li
+        class="layer flex items-center rounded-md border border-transparent bg-surface pe-1 not-data-selected:hover:bg-hover data-selected:border-primary data-selected:bg-primary-soft"
+        cdkDrag
+        cdkDragPreviewContainer="parent"
+        [cdkDragData]="layer.id"
+        [attr.data-selected]="layer.selected ? '' : null"
+      >
+        <button
+          type="button"
+          class="flex flex-none items-center self-stretch px-1 text-muted cursor-grab touch-none"
+          cdkDragHandle
+          [attr.aria-label]="t('designer.design.reorder', { name })"
+          [title]="t('designer.design.reorder', { name })"
+          (keydown.alt.arrowup)="move(layer.id, i - 1, $event)"
+          (keydown.alt.arrowdown)="move(layer.id, i + 1, $event)"
+        >
+          <svg class="size-[18px] fill-current" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="9" cy="6" r="1.5" />
+            <circle cx="15" cy="6" r="1.5" />
+            <circle cx="9" cy="12" r="1.5" />
+            <circle cx="15" cy="12" r="1.5" />
+            <circle cx="9" cy="18" r="1.5" />
+            <circle cx="15" cy="18" r="1.5" />
+          </svg>
+        </button>
+        <button
+          type="button"
+          class="flex min-w-0 flex-1 items-center gap-2 p-1 text-start cursor-pointer"
+          [attr.aria-pressed]="layer.selected"
+          (click)="select(layer.id)"
+        >
+          @if (layer.thumbnail; as thumbnail) {
+            <img
+              class="size-10 flex-none rounded-sm border border-border bg-surface-2 object-contain"
+              [src]="thumbnail"
+              alt=""
+            />
+          } @else if (layer.shape; as shape) {
+            <app-shape-icon
+              class="size-10 flex-none rounded-sm border border-border bg-surface-2 p-[9px] text-muted"
+              [shape]="shape"
+            />
+          } @else {
+            <svg
+              class="icon size-10 rounded-sm border border-border bg-surface-2 p-2 stroke-muted stroke-[2.5]"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path d="M6 6h12M12 6v12" />
+            </svg>
+          }
+          <span class="truncate text-[13px] font-medium" dir="auto">{{ name }}</span>
+        </button>
+        <button
+          type="button"
+          class="icon-btn layer__action size-8"
+          [attr.aria-label]="t('designer.design.duplicate', { name })"
+          [title]="t('designer.design.duplicate', { name })"
+          (click)="design.duplicateLayer(layer.id)"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="8" y="8" width="12" height="12" rx="2" />
+            <path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2" />
+          </svg>
+        </button>
+        <button
+          type="button"
+          class="icon-btn layer__action size-8"
+          [attr.aria-label]="t('designer.design.delete', { name })"
+          [title]="t('designer.design.delete', { name })"
+          (click)="design.removeLayer(layer.id)"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M4 7h16M10 11v6M14 11v6M6 7l1 12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2l1-12M9 7V4h6v3"
+            />
+          </svg>
+        </button>
+      </li>
+    }
+  </ul>
+</ng-container>

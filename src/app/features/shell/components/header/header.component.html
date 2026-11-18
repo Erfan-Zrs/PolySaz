@@ -1,0 +1,109 @@
+<header
+  class="relative flex h-header items-center gap-3 border-b border-border bg-surface px-4"
+  *transloco="let t"
+  (keydown.escape)="closeMenu()"
+>
+  <a
+    class="inline-flex items-center gap-2 text-[18px] font-extrabold text-text"
+    [routerLink]="['/', language.lang()]"
+  >
+    <svg
+      class="size-[26px] fill-primary-soft stroke-primary stroke-[1.8]"
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+    >
+      <rect x="6" y="2" width="12" height="20" rx="3.5" />
+      <rect class="fill-primary stroke-none" x="8.5" y="4.5" width="3.5" height="6" rx="1.75" />
+    </svg>
+    {{ t('common.appName') }}
+  </a>
+
+  <button
+    type="button"
+    class="icon-btn ms-auto menu:hidden"
+    aria-controls="site-menu"
+    [attr.aria-expanded]="menuOpen()"
+    [attr.aria-label]="t(menuOpen() ? 'nav.close' : 'nav.open')"
+    (click)="toggleMenu()"
+  >
+    <svg class="icon stroke-[1.8]" viewBox="0 0 24 24" aria-hidden="true">
+      @if (menuOpen()) {
+        <path d="M6 6l12 12M18 6 6 18" />
+      } @else {
+        <path d="M4 7h16M4 12h16M4 17h16" />
+      }
+    </svg>
+  </button>
+
+  <div
+    id="site-menu"
+    class="absolute inset-x-0 top-full flex-col items-stretch gap-4 border-b border-border bg-surface p-4 shadow-md menu:static menu:flex menu:flex-1 menu:flex-row menu:items-center menu:border-0 menu:bg-transparent menu:p-0 menu:shadow-none"
+    [class.flex]="menuOpen()"
+    [class.hidden]="!menuOpen()"
+  >
+    <nav class="flex flex-col gap-1 menu:ms-4 menu:flex-row" [attr.aria-label]="t('nav.label')">
+      @for (link of links; track link) {
+        <a
+          class="rounded-sm px-3 py-2 font-medium text-muted hover:bg-hover hover:text-text aria-[current=page]:text-primary!"
+          [routerLink]="['/', language.lang(), link]"
+          routerLinkActive="is-active"
+          ariaCurrentWhenActive="page"
+        >
+          {{ t('nav.' + link) }}
+        </a>
+      }
+    </nav>
+
+    <div class="flex items-center gap-2 menu:ms-auto">
+      <div class="segmented" role="group" [attr.aria-label]="t('common.theme.label')">
+        @for (option of themes; track option) {
+          <button
+            type="button"
+            [attr.aria-pressed]="theme.preference() === option"
+            [attr.aria-label]="t('common.theme.' + option)"
+            [title]="t('common.theme.' + option)"
+            (click)="onTheme(option)"
+          >
+            @switch (option) {
+              @case ('light') {
+                <svg class="icon stroke-[1.8]" viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="12" r="4.5" />
+                  <path
+                    d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"
+                  />
+                </svg>
+              }
+              @case ('dark') {
+                <svg class="icon stroke-[1.8]" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" />
+                </svg>
+              }
+              @case ('system') {
+                <svg class="icon stroke-[1.8]" viewBox="0 0 24 24" aria-hidden="true">
+                  <rect x="3" y="4" width="18" height="12" rx="2" />
+                  <path d="M8 20h8M12 16v4" />
+                </svg>
+              }
+            }
+          </button>
+        }
+      </div>
+
+      <label class="visually-hidden" for="language-select">{{ t('common.language.label') }}</label>
+      <select id="language-select" class="control" (change)="onLanguageChange($event)">
+        @for (l of languages; track l.code) {
+          <option [value]="l.code" [selected]="l.code === language.lang()" [attr.lang]="l.code">
+            {{ l.nativeName }}
+          </option>
+        }
+      </select>
+    </div>
+
+    <a
+      class="btn-cta btn-cta--sm self-start menu:self-auto"
+      [routerLink]="['/', language.lang(), 'design']"
+    >
+      {{ t('nav.design') }}
+    </a>
+  </div>
+</header>

@@ -1,0 +1,45 @@
+<ng-container *transloco="let t">
+  @if (post(); as post) {
+    <article class="page-column max-w-[760px] pb-18 pt-8">
+      <a class="link-arrow" [routerLink]="['/', language.lang(), 'blog']">
+        <svg class="icon-directional" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M19 12H5m5-5-5 5 5 5" />
+        </svg>
+        {{ t('blog.back') }}
+      </a>
+      <header>
+        <p class="mt-6 text-[13px] text-muted">
+          <time [attr.datetime]="post.date">{{ post.date | localDate }}</time>
+          ·
+          {{ t('blog.readTime', { minutes: (post.readMinutes | localNumber) }) }}
+        </p>
+        <h1 class="page-head__title">{{ t('blog.posts.' + post.slug + '.title') }}</h1>
+        <p class="page-head__lead">{{ t('blog.posts.' + post.slug + '.excerpt') }}</p>
+      </header>
+      @if (cover(); as cover) {
+        <app-case-poster
+          class="my-6 h-[clamp(180px,34vw,320px)] overflow-hidden rounded-lg"
+          shape="cover"
+          [design]="cover"
+        />
+      }
+      <div class="prose">
+        @for (p of paragraphs(); track p) {
+          <p>{{ t('blog.posts.' + post.slug + '.' + p) }}</p>
+        }
+      </div>
+      <aside class="card mt-8 flex flex-wrap items-center justify-between gap-3 p-6">
+        <p class="font-semibold">{{ t('blog.cta.text') }}</p>
+        <a class="btn-cta" [routerLink]="['/', language.lang(), 'design']">
+          {{ t('blog.cta.button') }}
+        </a>
+      </aside>
+    </article>
+  } @else {
+    <div class="page-column max-w-[760px] pb-18 pt-8">
+      <h1 class="page-head__title">{{ t('blog.notFound.title') }}</h1>
+      <p class="page-head__lead">{{ t('blog.notFound.text') }}</p>
+      <a class="btn-cta" [routerLink]="['/', language.lang(), 'blog']">{{ t('blog.back') }}</a>
+    </div>
+  }
+</ng-container>

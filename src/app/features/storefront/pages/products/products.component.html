@@ -1,0 +1,45 @@
+<ng-container *transloco="let t">
+  <header class="page-head">
+    <div class="page-column">
+      <p class="eyebrow">{{ t('catalog.eyebrow') }}</p>
+      <h1 class="page-head__title">{{ t('catalog.title') }}</h1>
+      <p class="page-head__lead">{{ t('catalog.lead') }}</p>
+    </div>
+  </header>
+
+  <section class="section section--tight">
+    <div class="page-column">
+      <div class="mb-6 flex flex-wrap items-end justify-between gap-4">
+        <div class="chips" role="group" [attr.aria-label]="t('catalog.filterLabel')">
+          @for (c of categories; track c) {
+            <button
+              type="button"
+              class="chip"
+              [attr.aria-pressed]="c === category()"
+              (click)="category.set(c)"
+            >
+              {{ t('catalog.categories.' + c) }}
+            </button>
+          }
+        </div>
+        <label class="flex flex-col gap-1">
+          <span class="field__label">{{ t('home.hero.phoneLabel') }}</span>
+          <select class="control" (change)="onPhoneChange($event)">
+            @for (spec of products.specs(); track spec.id) {
+              <option [value]="spec.id" [selected]="spec.id === state.spec()?.id">
+                {{ spec.brand }} {{ spec.name }}
+              </option>
+            }
+          </select>
+        </label>
+      </div>
+
+      <div class="grid-cards">
+        @for (design of designs(); track design.id) {
+          <app-product-card [design]="design" [spec]="state.spec()" />
+        }
+      </div>
+      <p class="hint mt-6">{{ t('catalog.note') }}</p>
+    </div>
+  </section>
+</ng-container>

@@ -1,0 +1,21 @@
+<button
+  type="button"
+  class="fixed start-2 top-2 z-30 -translate-y-[200%] rounded-sm bg-primary px-3 py-2 text-primary-contrast focus-visible:translate-none"
+  *transloco="let t"
+  (click)="focusMain()"
+>
+  {{ t('common.skipToContent') }}
+</button>
+<app-header
+  class="top-0 z-20 transition-[margin-top] duration-260 ease-[cubic-bezier(0.2,0.8,0.2,1)] motion-reduce:transition-none max-wide:data-hidden:-mt-header"
+  [class.sticky]="!fullscreen()"
+  [class.relative]="fullscreen()"
+  [attr.data-hidden]="fullscreen() && header.hidden() ? '' : null"
+  (focusin)="header.hidden.set(false)"
+/>
+<main id="main" class="flex-1 outline-none" [class.min-h-0]="fullscreen()" tabindex="-1">
+  <router-outlet />
+</main>
+@if (!fullscreen()) {
+  <app-footer />
+}

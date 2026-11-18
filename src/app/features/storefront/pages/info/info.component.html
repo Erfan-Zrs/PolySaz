@@ -1,0 +1,76 @@
+<ng-container *transloco="let t">
+  <header class="page-head">
+    <div class="page-column">
+      <p class="eyebrow">{{ t('info.eyebrow') }}</p>
+      <h1 class="page-head__title">{{ t('info.title') }}</h1>
+      <p class="page-head__lead">{{ t('info.lead') }}</p>
+    </div>
+  </header>
+
+  <div class="page-column">
+
+    <div class="flex flex-col gap-12">
+      <section id="about" class="scroll-mt-[calc(var(--header-height)+16px)]">
+        <h2 class="section__title">{{ t('info.about.title') }}</h2>
+        <div class="prose">
+          <p>{{ t('info.about.p1') }}</p>
+          <p>{{ t('info.about.p2') }}</p>
+        </div>
+      </section>
+
+      <section id="how" class="scroll-mt-[calc(var(--header-height)+16px)]">
+        <h2 class="section__title mb-4">{{ t('info.how.title') }}</h2>
+        <ol class="tiles">
+          @for (step of steps; track step; let i = $index) {
+          <li class="card tiles__item">
+            <span class="tiles__badge tiles__badge--number" aria-hidden="true">{{
+              i + 1 | localNumber
+              }}</span>
+            <h3 class="tiles__title">{{ t('home.how.steps.' + step + '.title') }}</h3>
+            <p class="tiles__text">{{ t('home.how.steps.' + step + '.text') }}</p>
+          </li>
+          }
+        </ol>
+      </section>
+
+      <section id="shipping" class="scroll-mt-[calc(var(--header-height)+16px)]">
+        <h2 class="section__title">{{ t('info.shipping.title') }}</h2>
+        <div class="prose">
+          <p>{{ t('info.shipping.p1') }}</p>
+          <p>{{ t('info.shipping.p2') }}</p>
+        </div>
+      </section>
+
+      <section id="faq" class="scroll-mt-[calc(var(--header-height)+16px)]">
+        <h2 class="section__title">{{ t('info.faq.title') }}</h2>
+        <div class="mt-4 flex flex-col gap-3">
+          @for (q of faq; track q) {
+          <details
+            class="card faq__item group px-4 py-3 details-content:grid details-content:grid-rows-[0fr] details-content:transition-[grid-template-rows,content-visibility] details-content:transition-discrete details-content:duration-300 details-content:ease-[ease] open:details-content:grid-rows-[1fr] motion-reduce:details-content:transition-none">
+            <summary
+              class="flex cursor-pointer list-none items-center justify-between gap-3 font-semibold [&::-webkit-details-marker]:hidden">
+              {{ t('info.faq.items.' + q + '.q') }}
+            </summary>
+            <div class="min-h-0 overflow-hidden">
+              <p
+                class="pt-2 text-muted opacity-0 transition-opacity duration-300 ease-[ease] group-open:opacity-100 motion-reduce:transition-none">
+                {{ t('info.faq.items.' + q + '.a') }}
+              </p>
+            </div>
+          </details>
+          }
+        </div>
+      </section>
+
+      <section id="contact" class="scroll-mt-[calc(var(--header-height)+16px)]">
+        <h2 class="section__title">{{ t('info.contact.title') }}</h2>
+        <div class="prose">
+          <p>{{ t('info.contact.p1') }}</p>
+        </div>
+        <a class="btn-cta" [routerLink]="['/', language.lang(), 'design']">
+          {{ t('home.hero.cta') }}
+        </a>
+      </section>
+    </div>
+  </div>
+</ng-container>

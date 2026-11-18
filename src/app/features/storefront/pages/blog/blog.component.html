@@ -1,0 +1,16 @@
+<ng-container *transloco="let t">
+  <header class="page-head">
+    <div class="page-column">
+      <p class="eyebrow">{{ t('blog.eyebrow') }}</p>
+      <h1 class="page-head__title">{{ t('blog.title') }}</h1>
+      <p class="page-head__lead">{{ t('blog.lead') }}</p>
+    </div>
+  </header>
+  <section class="section section--tight">
+    <div class="page-column grid-cards">
+      @for (post of posts; track post.slug) {
+        <app-blog-card [post]="post" />
+      }
+    </div>
+  </section>
+</ng-container>

@@ -1,0 +1,27 @@
+<footer class="border-t border-border bg-surface text-[14px]" *transloco="let t">
+  <div
+    class="page-column grid grid-cols-[repeat(auto-fit,minmax(160px,1fr))] gap-8 pb-8 pt-12 menu:grid-cols-[2fr_repeat(3,1fr)]"
+  >
+    <div class="col-span-full max-w-[360px] menu:col-auto">
+      <p class="text-[18px] font-extrabold">{{ t('common.appName') }}</p>
+      <p class="mt-2 text-muted">{{ t('footer.blurb') }}</p>
+    </div>
+    @for (column of columns; track column.key) {
+      <nav class="flex flex-col gap-2" [attr.aria-label]="t('footer.' + column.key)">
+        <p class="font-bold">{{ t('footer.' + column.key) }}</p>
+        @for (link of column.links; track link.key) {
+          <a
+            class="text-muted hover:text-primary"
+            [routerLink]="['/', language.lang(), link.path]"
+            [fragment]="link.fragment"
+          >
+            {{ t(link.key) }}
+          </a>
+        }
+      </nav>
+    }
+  </div>
+  <div class="page-column border-t border-border py-4 text-[13px] text-muted">
+    {{ t('footer.copyright', { year: (today | localDate: { year: 'numeric' }) }) }}
+  </div>
+</footer>

@@ -1,0 +1,22 @@
+<article
+  class="card relative flex h-full flex-col overflow-hidden outline-offset-2 transition-shadow duration-200 ease-[ease] hover:shadow-md has-[a:focus-visible]:shadow-md has-[a:focus-visible]:outline-2 has-[a:focus-visible]:outline-focus"
+  *transloco="let t"
+>
+  <app-case-poster class="h-40" shape="cover" [design]="cover()" />
+  <div class="flex flex-col gap-2 p-4">
+    <p class="text-[13px] text-muted">
+      <time [attr.datetime]="post().date">{{ post().date | localDate }}</time>
+      ·
+      {{ t('blog.readTime', { minutes: (post().readMinutes | localNumber) }) }}
+    </p>
+    <h3 class="text-[17px] leading-normal">
+      <a
+        class="outline-none after:absolute after:inset-0"
+        [routerLink]="['/', language.lang(), 'blog', post().slug]"
+      >
+        {{ t('blog.posts.' + post().slug + '.title') }}
+      </a>
+    </h3>
+    <p class="text-[13px] text-muted">{{ t('blog.posts.' + post().slug + '.excerpt') }}</p>
+  </div>
+</article>

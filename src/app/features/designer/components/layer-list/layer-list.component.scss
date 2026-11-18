@@ -1,0 +1,31 @@
+@layer components {
+  @media (hover: hover) {
+    .layer__action {
+      opacity: 0;
+    }
+
+    .layer:hover .layer__action,
+    .layer:focus-within .layer__action,
+    .layer[data-selected] .layer__action {
+      opacity: 1;
+    }
+  }
+
+  .layer {
+    transition: background 120ms;
+  }
+
+  .layer.cdk-drag-preview {
+    background: var(--color-surface);
+    box-shadow: var(--shadow-md);
+  }
+
+  .layer.cdk-drag-placeholder {
+    opacity: 0.35;
+  }
+
+  .cdk-drop-list-dragging .layer:not(.cdk-drag-placeholder),
+  .layer.cdk-drag-animating {
+    transition: transform 200ms ease;
+  }
+}

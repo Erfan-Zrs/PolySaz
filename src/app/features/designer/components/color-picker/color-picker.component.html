@@ -1,0 +1,29 @@
+<ng-container *transloco="let t">
+  <div class="flex flex-wrap gap-2" role="group" [attr.aria-label]="label()">
+    @for (c of colors; track c.id) {
+      <button
+        type="button"
+        class="relative size-7 rounded-full border border-border outline-offset-2 cursor-pointer aria-pressed:outline-2 aria-pressed:outline-primary"
+        [style.background]="c.hex"
+        [attr.aria-pressed]="color().toLowerCase() === c.hex"
+        [attr.aria-label]="t('designer.color.' + c.id)"
+        [title]="t('designer.color.' + c.id)"
+        (click)="colorChange.emit(c.hex)"
+      ></button>
+    }
+    <label
+      class="relative size-7 rounded-full border border-border outline-offset-2 cursor-pointer has-focus-visible:outline-2 has-focus-visible:outline-primary data-active:outline-2 data-active:outline-primary"
+      [attr.data-active]="isPresetColor() ? null : ''"
+      [style.background]="isPresetColor() ? customSwatch : color()"
+      [title]="t('designer.color.custom')"
+    >
+      <input
+        type="color"
+        class="visually-hidden"
+        [attr.aria-label]="t('designer.color.custom')"
+        [value]="color()"
+        (input)="onCustomColor($event)"
+      />
+    </label>
+  </div>
+</ng-container>

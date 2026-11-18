@@ -1,0 +1,111 @@
+[
+  {
+    "id": "samsung-galaxy-a55",
+    "brand": "Samsung",
+    "name": "Galaxy A55",
+    "verified": false,
+    "body": { "width": 77.4, "height": 161.1, "cornerRadius": 9, "depth": 8.2 },
+    "caseWall": 1.5,
+    "cameraCutouts": [{ "shape": "pill", "x": 8, "y": 8, "w": 22, "h": 48, "r": 11 }],
+    "cameraLenses": [
+      { "kind": "lens", "x": 19, "y": 19, "d": 12 },
+      { "kind": "lens", "x": 19, "y": 32, "d": 12 },
+      { "kind": "lens", "x": 19, "y": 45, "d": 12 }
+    ],
+    "sideFeatures": [
+      { "kind": "button", "side": "left", "at": 38, "length": 26, "width": 4.5 },
+      { "kind": "button", "side": "left", "at": 62, "length": 13, "width": 4.5 },
+      { "kind": "usb", "side": "bottom", "at": 40.2, "length": 11, "width": 4.4 },
+      { "kind": "speaker", "side": "bottom", "at": 24, "length": 12, "width": 3 },
+      { "kind": "mic", "side": "bottom", "at": 54, "length": 2, "width": 2 },
+      { "kind": "mic", "side": "top", "at": 58, "length": 2, "width": 2 },
+      { "kind": "sim", "side": "top", "at": 24, "length": 14, "width": 2.6 }
+    ],
+    "printZone": { "dpi": 300, "bleed": 2 },
+    "caseColors": ["clear", "black", "white"]
+  },
+  {
+    "id": "xiaomi-redmi-note-13",
+    "brand": "Xiaomi",
+    "name": "Redmi Note 13",
+    "verified": false,
+    "body": { "width": 75.8, "height": 162.2, "cornerRadius": 8, "depth": 8.0 },
+    "caseWall": 1.5,
+    "cameraCutouts": [{ "shape": "rect", "x": 7, "y": 7, "w": 24, "h": 38, "r": 6 }],
+    "cameraLenses": [
+      { "kind": "lens", "x": 14, "y": 15, "d": 12 },
+      { "kind": "lens", "x": 14, "y": 30, "d": 9 },
+      { "kind": "lens", "x": 26, "y": 13, "d": 5 },
+      { "kind": "flash", "x": 26, "y": 22, "d": 4 },
+      { "kind": "sensor", "x": 26, "y": 30, "d": 3 }
+    ],
+    "sideFeatures": [
+      { "kind": "button", "side": "left", "at": 40, "length": 25, "width": 4.5 },
+      { "kind": "button", "side": "left", "at": 64, "length": 13, "width": 4.5 },
+      { "kind": "sim", "side": "right", "at": 30, "length": 16, "width": 2.6 },
+      { "kind": "usb", "side": "bottom", "at": 39.4, "length": 11, "width": 4.4 },
+      { "kind": "speaker", "side": "bottom", "at": 24, "length": 12, "width": 3 },
+      { "kind": "mic", "side": "bottom", "at": 52, "length": 2, "width": 2 },
+      { "kind": "jack", "side": "top", "at": 56, "length": 5, "width": 5 },
+      { "kind": "mic", "side": "top", "at": 40, "length": 2, "width": 2 },
+      { "kind": "speaker", "side": "top", "at": 25, "length": 8, "width": 2.5 }
+    ],
+    "printZone": { "dpi": 300, "bleed": 2 },
+    "caseColors": ["clear", "black", "white"]
+  },
+  {
+    "id": "apple-iphone-15",
+    "brand": "Apple",
+    "name": "iPhone 15",
+    "verified": false,
+    "body": { "width": 71.6, "height": 147.6, "cornerRadius": 10.5, "depth": 7.8 },
+    "caseWall": 1.5,
+    "cameraCutouts": [{ "shape": "rect", "x": 6, "y": 6, "w": 31, "h": 31, "r": 8 }],
+    "cameraLenses": [
+      { "kind": "lens", "x": 14, "y": 14, "d": 13 },
+      { "kind": "lens", "x": 29, "y": 29, "d": 13 },
+      { "kind": "flash", "x": 29, "y": 14, "d": 5 },
+      { "kind": "sensor", "x": 14, "y": 29, "d": 3 }
+    ],
+    "sideFeatures": [
+      { "kind": "button", "side": "left", "at": 45, "length": 19, "width": 4.5 },
+      { "kind": "button", "side": "right", "at": 25, "length": 8, "width": 4.5 },
+      { "kind": "button", "side": "right", "at": 40, "length": 12, "width": 4.5 },
+      { "kind": "button", "side": "right", "at": 54, "length": 12, "width": 4.5 },
+      { "kind": "sim", "side": "right", "at": 95, "length": 16, "width": 2.6 },
+      { "kind": "usb", "side": "bottom", "at": 37.3, "length": 11, "width": 4.4 },
+      { "kind": "speaker", "side": "bottom", "at": 22.3, "length": 11, "width": 2.6 },
+      { "kind": "speaker", "side": "bottom", "at": 52.3, "length": 11, "width": 2.6 }
+    ],
+    "printZone": { "dpi": 300, "bleed": 2 },
+    "caseColors": ["clear", "black", "white"]
+  },
+  {
+    "id": "apple-iphone-17",
+    "brand": "Apple",
+    "name": "iPhone 17",
+    "verified": false,
+    "body": { "width": 71.5, "height": 149.6, "cornerRadius": 11, "depth": 7.95 },
+    "caseWall": 1.5,
+    "cameraCutouts": [{ "shape": "rect", "x": 6, "y": 6, "w": 30, "h": 38, "r": 9 }],
+    "cameraLenses": [
+      { "kind": "lens", "x": 15, "y": 15.5, "d": 13 },
+      { "kind": "lens", "x": 15, "y": 34.5, "d": 13 },
+      { "kind": "flash", "x": 29.5, "y": 19, "d": 5 },
+      { "kind": "sensor", "x": 29.5, "y": 31, "d": 2.5 }
+    ],
+    "sideFeatures": [
+      { "kind": "button", "side": "left", "at": 45, "length": 19, "width": 4.5 },
+      { "kind": "button", "side": "left", "at": 100, "length": 18, "width": 4.5 },
+      { "kind": "button", "side": "right", "at": 25, "length": 8, "width": 4.5 },
+      { "kind": "button", "side": "right", "at": 40, "length": 12, "width": 4.5 },
+      { "kind": "button", "side": "right", "at": 54, "length": 12, "width": 4.5 },
+      { "kind": "sim", "side": "right", "at": 95, "length": 16, "width": 2.6 },
+      { "kind": "usb", "side": "bottom", "at": 37.25, "length": 11, "width": 4.4 },
+      { "kind": "speaker", "side": "bottom", "at": 22.25, "length": 11, "width": 2.6 },
+      { "kind": "speaker", "side": "bottom", "at": 52.25, "length": 11, "width": 2.6 }
+    ],
+    "printZone": { "dpi": 300, "bleed": 2 },
+    "caseColors": ["clear", "black", "white"]
+  }
+]

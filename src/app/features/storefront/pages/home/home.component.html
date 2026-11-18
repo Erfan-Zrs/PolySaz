@@ -1,0 +1,124 @@
+<ng-container *transloco="let t">
+  <app-hero />
+
+  <section class="section" aria-labelledby="how-title">
+    <div class="page-column">
+      <header class="section__head">
+        <p class="eyebrow">{{ t('home.how.eyebrow') }}</p>
+        <h2 id="how-title" class="section__title">{{ t('home.how.title') }}</h2>
+      </header>
+      <ol class="tiles">
+        @for (step of steps; track step; let i = $index) {
+          <li class="card tiles__item">
+            <span class="tiles__badge tiles__badge--number" aria-hidden="true">{{
+              i + 1 | localNumber
+            }}</span>
+            <h3 class="tiles__title">{{ t('home.how.steps.' + step + '.title') }}</h3>
+            <p class="tiles__text">{{ t('home.how.steps.' + step + '.text') }}</p>
+          </li>
+        }
+      </ol>
+    </div>
+  </section>
+
+  <section class="section section--alt" aria-labelledby="ready-title">
+    <div class="page-column">
+      <header class="section__head section__head--split">
+        <div>
+          <p class="eyebrow">{{ t('home.ready.eyebrow') }}</p>
+          <h2 id="ready-title" class="section__title">{{ t('home.ready.title') }}</h2>
+        </div>
+        <a class="link-arrow" [routerLink]="['/', language.lang(), 'products']">
+          {{ t('home.ready.all') }}
+          <svg class="icon-directional" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M5 12h14m-5-5 5 5-5 5" />
+          </svg>
+        </a>
+      </header>
+      <div class="grid-cards">
+        @for (design of featured; track design.id) {
+          <app-product-card [design]="design" [spec]="state.spec()" />
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="why-title">
+    <div class="page-column">
+      <header class="section__head">
+        <p class="eyebrow">{{ t('home.why.eyebrow') }}</p>
+        <h2 id="why-title" class="section__title">{{ t('home.why.title') }}</h2>
+      </header>
+      <ul class="tiles">
+        @for (feature of features; track feature) {
+          <li class="tiles__item">
+            <span class="tiles__badge" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                @switch (feature) {
+                  @case ('print') {
+                    <path
+                      d="M7 9V3h10v6M7 17H5a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-2M7 14h10v7H7z"
+                    />
+                  }
+                  @case ('fonts') {
+                    <path d="M4 20 10 4h1l6 16M6.5 14h8M17 20h3" />
+                  }
+                  @case ('fit') {
+                    <path
+                      d="M8 2h8a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3zM9 5h3v5H9z"
+                    />
+                  }
+                  @case ('shipping') {
+                    <path
+                      d="M3 6h11v10H3zM14 9h4l3 3v4h-7M7 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm10 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"
+                    />
+                  }
+                }
+              </svg>
+            </span>
+            <h3 class="tiles__title">{{ t('home.why.items.' + feature + '.title') }}</h3>
+            <p class="tiles__text">{{ t('home.why.items.' + feature + '.text') }}</p>
+          </li>
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section--alt" aria-labelledby="blog-title">
+    <div class="page-column">
+      <header class="section__head section__head--split">
+        <div>
+          <p class="eyebrow">{{ t('home.blog.eyebrow') }}</p>
+          <h2 id="blog-title" class="section__title">{{ t('home.blog.title') }}</h2>
+        </div>
+        <a class="link-arrow" [routerLink]="['/', language.lang(), 'blog']">
+          {{ t('home.blog.all') }}
+          <svg class="icon-directional" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M5 12h14m-5-5 5 5-5 5" />
+          </svg>
+        </a>
+      </header>
+      <div class="grid-cards">
+        @for (post of posts; track post.slug) {
+          <app-blog-card [post]="post" />
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="page-column">
+      <div
+        class="flex flex-wrap items-center justify-between gap-6 rounded-lg bg-primary px-8 py-12 text-primary-contrast"
+      >
+        <div>
+          <h2 class="section__title">{{ t('home.cta.title') }}</h2>
+          <p class="mt-2 max-w-[36em] opacity-90">{{ t('home.cta.text') }}</p>
+        </div>
+        <a class="btn-cta btn-cta--light" [routerLink]="['/', language.lang(), 'design']">
+          {{ t('home.cta.button') }}
+        </a>
+      </div>
+    </div>
+  </section>
+</ng-container>

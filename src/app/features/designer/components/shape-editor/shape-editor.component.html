@@ -1,0 +1,46 @@
+<ng-container *transloco="let t">
+  @let style = shapeStyle();
+  @if (!style.line) {
+    <div class="segmented" role="group" [attr.aria-label]="t('designer.shapes.style')">
+      <button
+        type="button"
+        [attr.aria-pressed]="style.filled"
+        (click)="design.setSelectedShapeStyle({ filled: true })"
+      >
+        {{ t('designer.shapes.filled') }}
+      </button>
+      <button
+        type="button"
+        [attr.aria-pressed]="!style.filled"
+        (click)="design.setSelectedShapeStyle({ filled: false })"
+      >
+        {{ t('designer.shapes.outline') }}
+      </button>
+    </div>
+  }
+
+  <app-color-picker
+    [color]="style.color"
+    [label]="t('designer.shapes.color')"
+    (colorChange)="design.setSelectedShapeStyle({ color: $event })"
+  />
+
+  @if (style.line || !style.filled) {
+    <label class="slider self-stretch">
+      <span class="slider__label">
+        {{ t('designer.shapes.thickness') }}
+        <output>{{
+          t('designer.shapes.mm', { value: style.strokeWidthMm | localNumber: 1 })
+        }}</output>
+      </span>
+      <input
+        type="range"
+        [min]="minStroke"
+        [max]="maxStroke"
+        step="0.5"
+        [value]="style.strokeWidthMm"
+        (input)="onStrokeInput($event)"
+      />
+    </label>
+  }
+</ng-container>

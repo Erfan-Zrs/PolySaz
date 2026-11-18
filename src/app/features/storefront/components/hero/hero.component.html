@@ -1,0 +1,176 @@
+<div class="pointer-events-none absolute inset-0 -z-10 overflow-hidden" aria-hidden="true">
+  @if (backdrop() === 'studio') {
+    <div class="absolute inset-0 bg-linear-to-b from-surface to-bg"></div>
+    <span
+      class="absolute -end-[12%] -top-[20%] size-[min(120vw,980px)] rounded-full bg-[radial-gradient(closest-side,var(--hero-glow-a),transparent)]"
+    ></span>
+    <span
+      class="absolute -bottom-[40%] -start-[18%] size-[min(110vw,820px)] rounded-full bg-[radial-gradient(closest-side,var(--hero-glow-b),transparent)]"
+    ></span>
+  }
+  <div
+    class="hero__galaxy absolute inset-0 opacity-0 transition-opacity duration-1000 ease-[ease] data-ready:opacity-100"
+    [attr.data-ready]="galaxyReady() ? '' : null"
+    #galaxyHost
+  ></div>
+  @if (backdrop() === 'photo') {
+    <img
+      class="hero__photo absolute inset-0 size-full object-cover opacity-0 transition-opacity duration-700 ease-[ease] data-loaded:opacity-100"
+      src="/assets/images/hero-galaxy-960.webp"
+      srcset="/assets/images/hero-galaxy-960.webp 960w, /assets/images/hero-galaxy-1920.webp 1920w"
+      sizes="100vw"
+      alt=""
+      fetchpriority="high"
+      [attr.data-loaded]="photoLoaded() ? '' : null"
+      (load)="photoLoaded.set(true)"
+    />
+  }
+  @if (backdrop() !== 'studio') {
+    <div class="absolute inset-0 bg-linear-to-b from-bg/55 via-bg/15 via-70% to-bg"></div>
+  }
+</div>
+
+<section
+  class="mx-auto grid max-w-content gap-6 px-4 pb-12 pt-8 wide:grid-cols-2 wide:grid-rows-[auto_1fr] wide:gap-x-12 wide:pb-18 wide:pt-12"
+  aria-labelledby="hero-title"
+  *transloco="let t"
+>
+  <div class="self-end wide:col-start-1 wide:row-start-1">
+    <p class="eyebrow text-muted">{{ t('home.hero.eyebrow') }}</p>
+    <h1
+      id="hero-title"
+      class="mb-3 mt-2 text-[clamp(30px,5.2vw,54px)] font-bold leading-[1.2] tracking-[-0.01em]"
+    >
+      {{ t('home.hero.title') }}
+      <span class="block text-muted">{{ t('home.hero.titleAccent') }}</span>
+    </h1>
+    <p class="max-w-[34em] text-[17px] text-muted">{{ t('home.hero.lead') }}</p>
+  </div>
+
+  <div
+    class="flex flex-col items-center gap-3 wide:col-start-2 wide:row-span-2 wide:row-start-1"
+    #stage
+    (pointerdown)="onStagePointerDown()"
+  >
+    <div
+      class="relative h-[min(62vh,480px)] w-full wide:h-[min(74vh,640px)]"
+      role="img"
+      [attr.aria-label]="
+        t('home.hero.stageLabel', { design: t('catalog.designs.' + design().id + '.name') })
+      "
+    >
+      <span
+        class="absolute inset-x-[8%] inset-y-[4%] rounded-full bg-[radial-gradient(closest-side,var(--hero-spot-a),var(--hero-spot-b)_55%,transparent)]"
+        aria-hidden="true"
+      ></span>
+      @if (spec(); as spec) {
+        <app-case-poster
+          class="hero__poster absolute inset-0 transition-[opacity,visibility] duration-500 ease-[ease] data-hidden:invisible data-hidden:opacity-0"
+          [attr.data-hidden]="sceneReady() ? '' : null"
+          [spec]="spec"
+          [design]="design()"
+          [name]="name()"
+        />
+      } @else {
+        <span
+          class="absolute inset-x-0 top-[6%] mx-auto aspect-[0.48] h-[88%] rounded-[13%/6%] bg-surface-2"
+          aria-hidden="true"
+        ></span>
+      }
+      <div
+        class="hero__scene absolute inset-0 opacity-0 transition-opacity duration-600 ease-[ease] cursor-grab active:cursor-grabbing data-ready:opacity-100"
+        [attr.data-ready]="sceneReady() ? '' : null"
+        #sceneHost
+      ></div>
+      @if (sceneReady() && showDragHint()) {
+        <span
+          class="pointer-events-none absolute inset-x-0 top-0 mx-auto flex w-fit items-center gap-1 rounded-pill bg-overlay px-3 py-1 text-[13px] text-muted shadow-sm"
+          aria-hidden="true"
+        >
+          <svg class="icon" viewBox="0 0 24 24">
+            <path d="M8 12H3m0 0 3-3m-3 3 3 3M16 12h5m0 0-3-3m3 3-3 3" />
+          </svg>
+          {{ t('home.hero.dragHint') }}
+        </span>
+      }
+    </div>
+
+    <div
+      class="flex items-center gap-2"
+      role="group"
+      [attr.aria-label]="t('home.hero.designsLabel')"
+    >
+      @for (d of designs; track d.id; let i = $index) {
+        <button
+          type="button"
+          class="hero__dot size-7 cursor-pointer before:m-auto before:block before:size-2.5 before:rounded-pill before:bg-border before:transition-[width] before:duration-200 before:ease-[ease] aria-pressed:before:w-6 aria-pressed:before:bg-text"
+          [attr.aria-pressed]="i === index()"
+          [attr.aria-label]="t('catalog.designs.' + d.id + '.name')"
+          [title]="t('catalog.designs.' + d.id + '.name')"
+          (click)="pick(i)"
+        ></button>
+      }
+      <button
+        type="button"
+        class="inline-flex size-8 items-center justify-center rounded-pill border border-border bg-surface text-muted cursor-pointer"
+        [attr.aria-label]="t(playing() ? 'home.hero.pause' : 'home.hero.play')"
+        [title]="t(playing() ? 'home.hero.pause' : 'home.hero.play')"
+        (click)="togglePlaying()"
+      >
+        @if (playing()) {
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M9 6v12M15 6v12" />
+          </svg>
+        } @else {
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M8 5.5v13l10-6.5z" />
+          </svg>
+        }
+      </button>
+    </div>
+  </div>
+
+  <form
+    class="flex flex-col gap-4 self-start wide:col-start-1 wide:row-start-2"
+    (submit)="onDesign($event)"
+    (focusin)="onFormFocus(true)"
+    (focusout)="onFormFocus(false)"
+  >
+    <div class="grid max-w-[28rem] gap-3">
+      <label class="flex flex-col gap-1">
+        <span class="field__label">{{ t('home.hero.nameLabel') }}</span>
+        <input
+          class="control h-12 w-full rounded-md text-[16px]"
+          type="text"
+          autocomplete="off"
+          enterkeyhint="go"
+          [attr.dir]="nameDir()"
+          [attr.maxlength]="nameMax"
+          [placeholder]="t('home.hero.namePlaceholder')"
+          [value]="name()"
+          (input)="onNameInput($event)"
+        />
+      </label>
+    </div>
+
+    <div class="flex flex-wrap gap-3">
+      <button type="submit" class="btn-cta">
+        {{ t('home.hero.cta') }}
+        <svg class="icon-directional" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M5 12h14m-5-5 5 5-5 5" />
+        </svg>
+      </button>
+      <a class="btn-cta btn-cta--ghost" [routerLink]="['/', language.lang(), 'products']">
+        {{ t('home.hero.secondary') }}
+      </a>
+    </div>
+
+    <ul
+      class="flex flex-wrap gap-x-4 gap-y-2 text-[13px] text-muted *:before:me-1 *:before:font-bold *:before:content-['✓']"
+    >
+      <li>{{ t('home.hero.trust.print') }}</li>
+      <li>{{ t('home.hero.trust.shipping') }}</li>
+      <li>{{ t('home.hero.trust.guarantee') }}</li>
+    </ul>
+  </form>
+</section>

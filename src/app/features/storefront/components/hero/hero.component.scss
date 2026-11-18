@@ -1,0 +1,48 @@
+@property --hero-tint-a {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: transparent;
+}
+
+@property --hero-tint-b {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: transparent;
+}
+
+@layer components {
+  :host(.hero) {
+    --hero-spot-a: color-mix(
+      in oklab,
+      var(--hero-tint-a) var(--hero-spot-strength),
+      var(--color-hero-glow)
+    );
+    --hero-spot-b: color-mix(
+      in oklab,
+      var(--hero-tint-b) calc(var(--hero-spot-strength) * 0.85),
+      color-mix(in oklab, var(--color-hero-glow) 60%, transparent)
+    );
+    --hero-glow-a: color-mix(in oklab, var(--hero-tint-a) var(--hero-tint-strength), transparent);
+    --hero-glow-b: color-mix(
+      in oklab,
+      var(--hero-tint-b) calc(var(--hero-tint-strength) * 0.8),
+      transparent
+    );
+    transition:
+      --hero-tint-a 1.2s ease,
+      --hero-tint-b 1.2s ease;
+  }
+}
+
+@layer components {
+  @media (prefers-reduced-motion: reduce) {
+    :host(:not(.motion-forced)),
+    :host(:not(.motion-forced)) .hero__poster,
+    :host(:not(.motion-forced)) .hero__scene,
+    :host(:not(.motion-forced)) .hero__dot::before,
+    :host(:not(.motion-forced)) .hero__galaxy,
+    :host(:not(.motion-forced)) .hero__photo {
+      transition: none !important;
+    }
+  }
+}

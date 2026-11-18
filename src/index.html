@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="fa" dir="rtl" data-theme="light">
+
+<head>
+  <meta charset="utf-8">
+  <title>polySaz</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var lang = 'fa';
+      var themePref = 'system';
+      try {
+        var seg = location.pathname.split('/')[1];
+        var saved = localStorage.getItem('polysaz.lang');
+        if (/^[a-z]{2}$/.test(seg || '')) lang = seg;
+        else if (saved && /^[a-z]{2}$/.test(saved)) lang = saved;
+        themePref = localStorage.getItem('polysaz.theme') || 'system';
+      } catch (e) { }
+      var dir = /^(fa|ar|he|ur|ps|ckb)$/.test(lang) ? 'rtl' : 'ltr';
+      try {
+        var loc = new Intl.Locale(lang);
+        var info = loc.getTextInfo ? loc.getTextInfo() : loc.textInfo;
+        if (info && info.direction) dir = info.direction;
+      } catch (e) { }
+      var dark = themePref === 'dark' ||
+        (themePref !== 'light' && window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches);
+      var theme = dark ? 'dark' : 'light';
+      root.setAttribute('lang', lang);
+      root.setAttribute('dir', dir);
+      root.setAttribute('data-theme', theme);
+      root.style.colorScheme = theme;
+    })();
+  </script>
+</head>
+
+<body>
+  <app-root></app-root>
+</body>
+
+</html>
